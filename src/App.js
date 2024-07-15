@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import MenuBar from './MenuBar'
-import JsContent from './JsContent'
+import Table from './JsContent'
 
 function App() {
     const [url, setUrl] = useState('https://jsonplaceholder.typicode.com/users')
@@ -16,7 +16,7 @@ function App() {
                 if (!response.ok) throw Error('Didn\'t receive expected data')
                 const data = await response.json();
                 // console.log(data);
-                setContent(JSON.stringify(data));
+                setContent(data);
                 setFetchErr(null)
             } catch (err) {
                 setFetchErr(err.message)
@@ -44,7 +44,7 @@ function App() {
             {
                 fetchErr ?
                     <p style={{ color: 'red' }}>{fetchErr}</p>
-                    : (!isLoading && <JsContent
+                    : (!isLoading && <Table
                         content={content}
                     />) || (
                         isLoading && <p>Loading Data from jsonholder server...</p>

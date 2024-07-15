@@ -1,11 +1,17 @@
-import React from 'react'
+import Row from './Row'
 
-const JsContent = ({ content }) => {
+const Table = ({ content }) => {
     return (
-        <main className='content'>
-            {content}
+        <main className='table-container'>
+            <table>
+                <tbody>
+                    {content.map(item => (
+                        <Row key={item.id} item={item} />
+                    ))}
+                </tbody>
+            </table>
         </main>
     )
 }
 
-export default JsContent
+export default Table
